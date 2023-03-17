@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="https://img.icons8.com/office/256/calculator.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text"  id="result">
+        <input type="text"  id="answer">
+        <div>
+            <button class="light" onclick="clearResult()">C</button>
+            <button class="light" onclick="percentage()">%</button>
+            <button class="light" onclick="backspace()"><span class="material-symbols-outlined">
+                backspace
+                </span></button>
+            <button class="light" onclick="operator('/')">&#247;</button>
+        </div>
+
+        <div>
+            <button onclick="insertNumber('7')">7</button>
+            <button onclick="insertNumber('8')">8</button>
+            <button onclick="insertNumber('9')">9</button>
+            <button class="light" onclick="operator('*')" style="font-size: x-large;">&#215;</button>
+        </div>
+
+        <div>
+            <button onclick="insertNumber('4')">4</button>
+            <button onclick="insertNumber('5')">5</button>
+            <button onclick="insertNumber('6')">6</button>
+            <button class="light" onclick="operator('+')">+</button>
+        </div>
+
+        <div>
+            <button onclick="insertNumber('1')">1</button>
+            <button onclick="insertNumber('2')">2</button>
+            <button onclick="insertNumber('3')">3</button>
+            <button class="light" onclick="operator('-')" style="font-size: x-large;">-</button>
+        </div>
+
+        <div>
+            <button onclick="insertNumber('00')">00</button>
+            <button onclick="insertNumber('0')">0</button>
+            <button onclick="insertDecimal('.')">.</button>
+            <button class="light orang" onclick="calculate()" style="font-size: x-large;">=</button>
+        </div>
+    </div>
+    <script src="javascript/script.js"></script>
+    </body>
+</html>
