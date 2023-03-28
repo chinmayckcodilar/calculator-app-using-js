@@ -98,24 +98,28 @@ function percentage() {
       num2=parseFloat((num1 * num2 / 100));
       num1=parseFloat(num1);
       result.value=(num1+num2).toFixed(2);
+      k=result.value;
       return answer.value=" ";
 
     case '-':
       num2=parseFloat((num1 * num2 / 100));
       num1=parseFloat(num1);
       result.value=(num1-num2).toFixed(2);
+      k=result.value;
       return answer.value=" ";
 
     case '*':
       num2=parseFloat(( num2 / 100));
       num1=parseFloat(num1);
       result.value=(num1*num2).toFixed(2);
+      k=result.value;
       return answer.value=" ";
     
     case '/':
       num2=parseFloat(( num2 / 100));
       num1=parseFloat(num1);
       result.value=(num1/num2).toFixed(2);
+      k=result.value;
       return answer.value=" ";
   }
 }
