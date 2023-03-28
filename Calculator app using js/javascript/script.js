@@ -31,7 +31,7 @@ let insertDecimal = (decimal) => {
 };
 
 let operator = (op) => {
-    calcComplete = false;
+  calcComplete = false;
   if (result.value != "") {
     let lastChar = result.value.slice(-1);
     if (
@@ -42,37 +42,85 @@ let operator = (op) => {
       lastChar !== "÷"
     ) {
       if (op == "*") {
-        result.value += " " + "x" + " ";
-        k += " " + op + " ";
+        result.value += "" + "x" + "";
+        k += "" + op + "";
       } else if (op == "/") {
-        result.value += " " + "÷" + " ";
-        k += " " + op + " ";
+        result.value += "" + "÷" + "";
+        k += "" + op + "";
       } else {
-        result.value += " " + op + " ";
-        k += " " + op + " ";
+        result.value += "" + op + "";
+        k += "" + op + "";
+      }
+    } else {
+      if(op=="*"){
+        result.value = result.value.slice(0, -1) + "x" + "";
+        k = k.slice(0, -1) + op + "";
+      }
+      else if(op=="/"){
+        result.value = result.value.slice(0, -1) + "÷" + "";
+        k = k.slice(0, -1) + op + "";
+      }
+      else if(op=="-"){
+        result.value = result.value + op + "";
+        k = k + op + "";
+      }
+      else{
+      result.value = result.value.slice(0, -1) + op + "";
+      k = k.slice(0, -1) + op + "";
       }
     }
   }
 };
 
-let percentage = () => {
-  if (result.value != "") {
-    result.value = eval(result.value) / 100;
-    k = eval(k / 100);
-    answer.value = eval(k);
+function percentage() {
+
+  if(k.includes('+')){
+    op = '+';
   }
-};
+  else if(k.includes('-')){
+    op = '-';
+  }
+  else if(k.includes('*')){
+    op = '*';
+  }
+  else if(k.includes('/')){
+    op = '/';
+  }
+  else{
+    result.value=eval(k/100);
+     answer.value=" ";
+  }
+  oper=k.indexOf(op);
+  num1=k.slice(0,oper);
+  num2=k.slice(oper+1);
+  switch(op) {
+    case '+':
+      num2=parseFloat((num1 * num2 / 100));
+      num1=parseFloat(num1);
+      result.value=(num1+num2).toFixed(2);
+      return answer.value=" ";
 
-let clearResult = () => {
-  result.value = "";
-  k = "";
-  answer.value = "";
-};
+    case '-':
+      num2=parseFloat((num1 * num2 / 100));
+      num1=parseFloat(num1);
+      result.value=(num1-num2).toFixed(2);
+      return answer.value=" ";
 
-let backspace = () => {
-  result.value = result.value.slice(0, -1);
-  k = k.slice(0, -1);
-};
+    case '*':
+      num2=parseFloat(( num2 / 100));
+      num1=parseFloat(num1);
+      result.value=(num1*num2).toFixed(2);
+      return answer.value=" ";
+    
+    case '/':
+      num2=parseFloat(( num2 / 100));
+      num1=parseFloat(num1);
+      result.value=(num1/num2).toFixed(2);
+      return answer.value=" ";
+  }
+}
+
+
 
 let calculate = () => {
   if (result.value == "") {
@@ -93,3 +141,17 @@ let calculate = () => {
     calcComplete = true;
   }
 };
+
+
+let clearResult = () => {
+  result.value = "";
+  k = "";
+  answer.value = "";
+};
+
+let backspace = () => {
+  result.value = result.value.slice(0, -1);
+  k = k.slice(0, -1);
+  answer.value=(answer.value).slice(0,-1);
+};
+
